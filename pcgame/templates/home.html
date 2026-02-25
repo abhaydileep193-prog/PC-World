@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PC World - Home</title>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">
+        <h1>PC World</h1>
+        <p>Your One-Stop Shop for High-Performance Computers</p>
+    </div>
+</header>
+
+<nav class="navbar">
+    <div class="nav-left">
+
+        <a href="{% url 'home' %}">Home</a>
+        <a href="#">Laptops</a>
+        <a href="#">Desktops</a>
+        <a href="#">Accessories</a>
+        <a href="#">Contact</a>
+    </div>
+   
+    
+
+
+    <div class="nav-right">
+        <a href="{% url 'login' %}" class="btn-outline">Login</a>
+        <a href="{% url 'register' %}" class="btn-solid">Register</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h2>Build Your Dream PC Today</h2>
+        <p>High-quality gaming PCs, workstations, and accessories at unbeatable prices.</p>
+        <a href="#" class="btn-primary">Shop Now</a>
+    </div>
+</section>
+
+<section class="products">
+    <h2>Featured Products</h2>
+
+    <div class="product-container">
+
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x180" alt="Gaming PC">
+            <h3>Gaming PC</h3>
+            <p>Powerful RTX graphics, 16GB RAM, 1TB SSD.</p>
+            <span class="price">$1299</span>
+        </div>
+
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x180" alt="Business Laptop">
+            <h3>Business Laptop</h3>
+            <p>Lightweight, 8GB RAM, 512GB SSD.</p>
+            <span class="price">$899</span>
+        </div>
+
+        <div class="product-card">
+            <img src="https://via.placeholder.com/300x180" alt="Gaming Monitor">
+            <h3>Gaming Monitor</h3>
+            <p>27" 144Hz Full HD display.</p>
+            <span class="price">$299</span>
+        </div>
+
+    </div>
+</section>
+
+<footer class="footer">
+    <p>&copy; 2026 PC World | All Rights Reserved</p>
+</footer>
+
+</body>
+</html>

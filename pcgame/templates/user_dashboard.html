@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/user_dashboard.css' %}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>PC Store</h2>
+    <ul>
+        <li><a href="{% url 'user_dashboard' %}" class="active">Dashboard</a></li>
+        <li><a href="{% url 'your_bookings' %}" class="active">Your Bookings</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <h1>Welcome, {{ request.user.username }}</h1>
+
+    <h2>Available Products</h2>
+
+    <div class="cards">
+        {% for product in products %}
+        <div class="card">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" width="150">
+            {% endif %}
+            <h3>{{ product.product_name }}</h3>
+            <p><strong>Brand:</strong> {{ product.brand }}</p>
+            <p><strong>Price:</strong> ₹{{ product.price }}</p>
+            <p><strong>Stock:</strong> {{ product.stock }}</p>
+
+            {% if product.stock > 0 %}
+                <a href="{% url 'book_product' product.id %}" class="btn">Book Now</a>
+            {% else %}
+                <button class="disabled">Out of Stock</button>
+            {% endif %}
+        </div>
+        {% empty %}
+        <p>No products available.</p>
+        {% endfor %}
+    </div>
+
+    
+    </div>
+</div>
+
+</body>
+</html>

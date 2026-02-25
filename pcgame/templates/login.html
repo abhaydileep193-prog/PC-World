@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | PC World</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body class="auth-body">
+
+<div class="auth-wrapper">
+    
+    <div class="auth-card">
+        <h2>Welcome Back</h2>
+        <p class="auth-subtitle">Login to continue to PC World</p>
+        {% if messages %}
+    {% for message in messages %}
+        <div class="message {{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Enter your username" required>
+            </div>
+
+            <div class="input-group">
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <button type="submit" class="btn-auth">Login</button>
+        </form>
+
+        <p class="auth-footer">
+            Don’t have an account?
+            <a href="{% url 'register' %}">Register here</a>
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>

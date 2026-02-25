@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #f1f5f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+}
+
+.booking-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.booking-card h2 {
+    margin-bottom: 20px;
+}
+
+.booking-card img {
+    margin: 15px 0;
+}
+
+.booking-card p {
+    margin: 5px 0;
+    color: #475569;
+}
+
+.booking-card input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0 15px;
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+}
+
+.booking-card button {
+    background: #2563eb;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.booking-card button:hover {
+    background: #1d4ed8;
+}
+
+.cancel {
+    display: block;
+    margin-top: 10px;
+    color: #ef4444;
+    text-decoration: none;
+}

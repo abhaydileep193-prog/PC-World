@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Product</title>
+    <link rel="stylesheet" href="{% static 'css/book_product.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <div class="booking-card">
+
+        <h2>Confirm Your Booking</h2>
+
+        {% if product.image %}
+            <img src="{{ product.image.url }}" width="200">
+        {% endif %}
+
+        <h3>{{ product.product_name }}</h3>
+        <p><strong>Brand:</strong> {{ product.brand }}</p>
+        <p><strong>Price:</strong> ₹{{ product.price }}</p>
+        <p><strong>Available Stock:</strong> {{ product.stock }}</p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label>Quantity</label>
+            <input type="number" name="quantity" min="1" max="{{ product.stock }}" required>
+
+            <button type="submit">Confirm Booking</button>
+            <a href="{% url 'user_dashboard' %}" class="cancel">Cancel</a>
+        </form>
+
+        <form method="POST" onsubmit="return confirmBooking();">
+    {% csrf_token %}
+
+    <label>Quantity</label>
+    <input type="number" name="quantity" min="1" max="{{ product.stock }}" required>
+
+    <button type="submit">Confirm Booking</button>
+    <a href="{% url 'user_dashboard' %}" class="cancel">Cancel</a>
+</form>
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/admin_dashboard.css' %}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Users</a></li>
+        <li><a href="#">Reports</a></li>
+        <li><a href="#">Settings</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <header>
+        <h1>Welcome, {{ request.user.username }}</h1>
+    </header>
+
+    <div class="cards">
+        <div class="card">
+            <h3>Total Users</h3>
+            <p>{{ total_users }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Add Products</h3>
+            <p>{{ add_products }}</p>
+            <li><a href="{% url 'add_pc_product' %}">Add Products</a></li>
+        </div>
+
+        <div class="card">
+            <h3>Super Admins</h3>
+            <p>{{ total_superusers }}</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

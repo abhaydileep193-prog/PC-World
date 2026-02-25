@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Bookings</title>
+    <link rel="stylesheet" href="{% static 'css/user_dashboard.css' %}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>PC Store</h2>
+    <ul>
+        <li><a href="{% url 'user_dashboard' %}">Dashboard</a></li>
+        <li><a href="{% url 'your_bookings' %}" class="active">Your Bookings</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <h1>Your Bookings</h1>
+
+    <div class="cards">
+        {% for booking in bookings %}
+        <div class="card">
+            {% if booking.product.image %}
+                <img src="{{ booking.product.image.url }}" width="150">
+            {% endif %}
+            <h3>{{ booking.product.product_name }}</h3>
+            <p><strong>Brand:</strong> {{ booking.product.brand }}</p>
+            <p><strong>Price:</strong> ₹{{ booking.product.price }}</p>
+            <p><strong>Quantity:</strong> {{ booking.quantity }}</p>
+            <p><strong>Booked On:</strong> {{ booking.booked_at }}</p>
+        </div>
+        {% empty %}
+        <p>You have no bookings yet.</p>
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+</html>

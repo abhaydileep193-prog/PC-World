@@ -1,0 +1,147 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+}
+
+/* Header */
+.header {
+    background: #111827;
+    color: white;
+    padding: 25px;
+    text-align: center;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1f2937;
+    padding: 15px 50px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    margin-right: 20px;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #3b82f6;
+}
+
+/* Auth Buttons */
+.btn-outline {
+    border: 1px solid #3b82f6;
+    padding: 8px 18px;
+    border-radius: 5px;
+}
+
+.btn-solid {
+    background: #3b82f6;
+    padding: 8px 18px;
+    border-radius: 5px;
+    color: white;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(to right, #2563eb, #1e40af);
+    padding: 80px 20px;
+    text-align: center;
+    color: white;
+}
+
+.hero-content h2 {
+    font-size: 42px;
+    margin-bottom: 15px;
+}
+
+.hero-content p {
+    margin-bottom: 25px;
+    font-size: 18px;
+}
+
+.btn-primary {
+    background: white;
+    color: #1e40af;
+    padding: 12px 30px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-primary:hover {
+    background: #dbeafe;
+}
+
+/* Products */
+.products {
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.products h2 {
+    margin-bottom: 40px;
+    font-size: 28px;
+}
+
+.product-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    background: white;
+    width: 280px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.product-card h3 {
+    margin: 15px 0 10px;
+}
+
+.product-card p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-weight: bold;
+    color: #2563eb;
+    font-size: 18px;
+}
+
+/* Footer */
+.footer {
+    background: #111827;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}

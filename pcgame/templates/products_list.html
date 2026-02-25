@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PC Products</title>
+    <link rel="stylesheet" href="{% static 'css/product_list.css' %}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>PC Store</h2>
+    <ul>
+        <li><a href="{% url 'product_list' %}" class="active">Products</a></li>
+        {% if request.user.is_staff %}
+        <li><a href="{% url 'add_pc_product' %}">Add Product</a></li>
+        {% endif %}
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <h1>PC Products</h1>
+
+    <div class="cards">
+        {% for product in products %}
+        <div class="card">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" width="150">
+            {% endif %}
+            <h3>{{ product.product_name }}</h3>
+            <p><strong>Brand:</strong> {{ product.brand }}</p>
+            <p><strong>Category:</strong> {{ product.category }}</p>
+            <p><strong>Price:</strong> ₹{{ product.price }}</p>
+            <p><strong>Stock:</strong> {{ product.stock }}</p>
+        </div>
+        {% empty %}
+        <p>No products available.</p>
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+</html>

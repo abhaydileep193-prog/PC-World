@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add PC Product</title>
+    <link rel="stylesheet" href="{% static 'css/add_pc_products.css' %}">
+</head>
+<body>
+
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+    <ul>
+        <li><a href="{% url 'admin_dashboard' %}">Dashboard</a></li>
+        <li><a href="{% url 'add_pc_product' %}" class="active">Add Product</a></li>
+        <li><a href="{% url 'product_list' %}">Product List</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        <li><a href="{% url 'add_category' %}">Add Category</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <h1>Add PC Product</h1>
+
+    {% for message in messages %}
+        <div class="alert">{{ message }}</div>
+    {% endfor %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label>Category</label>
+        <select name="category" required>
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category }}</option>
+            {% endfor %}
+        </select>
+
+        <label>Product Name</label>
+        <input type="text" name="product_name" required>
+
+        <label>Brand</label>
+        <input type="text" name="brand">
+
+        <label>Description</label>
+        <textarea name="description"></textarea>
+
+        <label>Price</label>
+        <input type="number" step="0.01" name="price" required>
+
+        <label>Stock</label>
+        <input type="number" name="stock" required>
+
+        <label>Product Image</label>
+        <input type="file" name="image">
+
+        <button type="submit">Add Product</button>
+    </form>
+</div>
+
+</body>
+</html>
