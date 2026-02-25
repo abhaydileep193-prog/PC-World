@@ -30,19 +30,33 @@
             <button type="submit">Confirm Booking</button>
             <a href="{% url 'user_dashboard' %}" class="cancel">Cancel</a>
         </form>
-
-        <form method="POST" onsubmit="return confirmBooking();">
+        <form method="POST" id="bookingForm">
     {% csrf_token %}
 
     <label>Quantity</label>
     <input type="number" name="quantity" min="1" max="{{ product.stock }}" required>
 
-    <button type="submit">Confirm Booking</button>
+    <button type="button" onclick="openPopup()">Confirm Booking</button>
     <a href="{% url 'user_dashboard' %}" class="cancel">Cancel</a>
 </form>
 
+<div id="confirmPopup" class="popup">
+    <div class="popup-content">
+        <h3>Confirm Booking</h3>
+        <p>Are you sure you want to book this product?</p>
+        <div class="popup-buttons">
+            <button onclick="submitBooking()">Yes, Confirm</button>
+            <button onclick="closePopup()">Cancel</button>
+        </div>
     </div>
 </div>
+<script src="{% static 'js/booking.js' %}"></script>
+
+  
+
+    
+
+
 
 </body>
 </html>

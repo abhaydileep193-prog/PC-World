@@ -66,3 +66,54 @@ body {
     color: #ef4444;
     text-decoration: none;
 }
+/* Popup Background */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Popup Box */
+.popup-content {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    width: 300px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-buttons {
+    margin-top: 15px;
+}
+
+.popup-buttons button {
+    margin: 5px;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.popup-buttons button:first-child {
+    background: #2563eb;
+    color: white;
+}
+
+.popup-buttons button:last-child {
+    background: #ef4444;
+    color: white;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
