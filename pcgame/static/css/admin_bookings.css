@@ -1,0 +1,110 @@
+/* General Layout */
+body {
+    background-color: #f4f7f6;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #334155;
+}
+
+.main-content {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Navigation Bar */
+.top-bar {
+    margin-bottom: 24px;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: #64748b;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.back-btn:hover {
+    color: #2563eb;
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1e293b;
+}
+
+/* Table Design */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden; /* Ensures corners are rounded */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.user-table thead {
+    background-color: #f8fafc;
+}
+
+.user-table th {
+    text-align: left;
+    padding: 16px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.user-table td {
+    padding: 16px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+/* Hover effect for rows */
+.user-table tbody tr:hover {
+    background-color: #f8fafc;
+    transition: background-color 0.15s ease-in-out;
+}
+
+/* Styling Specific Columns */
+.user-table td:first-child {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.user-table td:nth-child(2) { /* Email column */
+    color: #64748b;
+    font-family: 'Courier New', Courier, monospace; /* Optional: mono for emails */
+    font-size: 0.85rem;
+}
+
+.user-table td:nth-child(6) { /* Total price column */
+    font-weight: 700;
+    color: #059669; /* Green for money */
+}
+
+/* Empty State Styling */
+.user-table td[colspan="7"] {
+    padding: 40px;
+    color: #94a3b8;
+    font-style: italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-content {
+        margin: 20px auto;
+    }
+    .user-table {
+        display: block;
+        overflow-x: auto; /* Makes table scrollable on small screens */
+    }
+}

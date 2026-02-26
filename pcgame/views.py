@@ -82,9 +82,24 @@ def register(request):
 
 
 def admin_dashboard(request):
+    total_users = User.objects.filter(is_superuser=False).count() 
 
-    return render(request, "admin_dashboard.html")
+    return render(request, 'admin_dashboard.html', {
+        'total_users': total_users
+    })
 
+
+def admin_users(request):
+    users = User.objects.filter(is_superuser=False)
+    return render(request, 'admin_users.html', {'users': users})
+
+
+def admin_bookings(request):
+    bookings = Booking.objects.select_related('user', 'product').all().order_by('-booked_at')
+
+    return render(request, 'admin_bookings.html', {
+        'bookings': bookings
+    })
 
 def logout_view(request):
     logout(request)
@@ -146,7 +161,7 @@ def add_pc_product(request):
 
 def product_list(request):
     products = PCProduct.objects.all().order_by("-created_at")
-    return render(request, "product_list.html", {"products": products})
+    return render(request, "products_list.html", {"products": products})
 
 
 

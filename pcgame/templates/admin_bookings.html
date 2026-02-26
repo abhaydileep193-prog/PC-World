@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Bookings</title>
+    <link rel="stylesheet" href="{% static 'css/admin_bookings.css' %}">
+</head>
+<body>
+
+<div class="main-content">
+
+    <div class="top-bar">
+        <a href="{% url 'admin_dashboard' %}" class="back-btn">← Back to Dashboard</a>
+    </div>
+
+    <h2>All Bookings</h2>
+
+    <table class="user-table">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Email</th>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>Booked On</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            {% if bookings %}
+                {% for booking in bookings %}
+                <tr>
+                    <td>
+                        {{ booking.user.get_full_name|default:booking.user.username }}
+                    </td>
+                    <td>{{ booking.user.email }}</td>
+                    <td>{{ booking.product.name }}</td>
+                    <td>₹ {{ booking.product.price }}</td>
+                    <td>{{ booking.quantity }}</td>
+                    <td>₹ {{ booking.total_price }}</td>
+                    <td>{{ booking.booked_at|date:"d M Y H:i" }}</td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="7" style="text-align:center;">No bookings found</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

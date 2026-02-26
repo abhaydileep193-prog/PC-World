@@ -1,35 +1,46 @@
-/* ========================= */
-/* GLOBAL RESET */
-/* ========================= */
+/* 1. Dashboard Variables & Reset */
+:root {
+    --bg-body: #f8fafc;
+    --sidebar-dark: #0f172a;
+    --accent-blue: #2563eb;
+    --text-header: #1e293b;
+    --text-body: #475569;
+    --white: #ffffff;
+    --success: #22c55e;
+    --warning: #f59e0b;
+    --border: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Inter', -apple-system, sans-serif;
 }
 
 body {
     display: flex;
+    background-color: var(--bg-body);
+    color: var(--text-body);
     min-height: 100vh;
-    background-color: #f1f5f9;
 }
 
-/* ========================= */
-/* SIDEBAR */
-/* ========================= */
+/* 2. Sidebar - Fixed Desktop View */
 .sidebar {
-    width: 250px;
-    background-color: #0f172a;
-    color: #ffffff;
-    padding: 25px 15px;
-    height: 100vh;
+    width: 260px;
+    background: var(--sidebar-dark);
+    color: var(--white);
+    padding: 2rem 1.5rem;
     position: fixed;
+    height: 100vh;
 }
 
 .sidebar h2 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-size: 22px;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    padding-left: 0.5rem;
+    border-left: 4px solid var(--accent-blue);
 }
 
 .sidebar ul {
@@ -37,99 +48,128 @@ body {
 }
 
 .sidebar ul li {
-    margin: 15px 0;
+    margin-bottom: 0.5rem;
 }
 
 .sidebar ul li a {
+    color: #94a3b8;
     text-decoration: none;
-    color: #cbd5e1;
     display: block;
-    padding: 10px;
-    border-radius: 6px;
-    transition: 0.3s ease;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s;
 }
 
-.sidebar ul li a:hover,
+.sidebar ul li a:hover, .sidebar ul li a.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+}
+
 .sidebar ul li a.active {
-    background-color: #2563eb;
-    color: #ffffff;
+    background: var(--accent-blue);
 }
 
-/* ========================= */
-/* MAIN CONTENT */
-/* ========================= */
+/* 3. Main Content Wrapper */
 .main-content {
-    margin-left: 250px;
-    padding: 40px;
+    margin-left: 260px;
+    padding: 3rem;
     width: 100%;
 }
 
 .main-content h1 {
-    margin-bottom: 30px;
-    color: #1e293b;
+    color: var(--text-header);
+    margin-bottom: 2.5rem;
+    font-weight: 700;
 }
 
-/* ========================= */
-/* PRODUCT CARD GRID */
-/* ========================= */
+/* 4. Inventory Grid & Cards */
 .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 25px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
 }
 
-/* ========================= */
-/* PRODUCT CARD */
-/* ========================= */
 .card {
-    background: #ffffff;
+    background: var(--white);
+    border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-    transition: 0.3s ease;
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
 }
 
+/* Image Styling */
 .card img {
     width: 100%;
     height: 180px;
-    object-fit: cover;
+    object-fit: contain; /* Keeps hardware proportions correct */
+    margin-bottom: 1.5rem;
+    background: #f1f5f9;
     border-radius: 8px;
-    margin-bottom: 15px;
+    padding: 10px;
 }
 
 .card h3 {
-    margin-bottom: 10px;
-    color: #0f172a;
+    color: var(--text-header);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    height: 2.4rem; /* Forces consistent title alignment */
+    overflow: hidden;
 }
 
+/* Data Rows */
 .card p {
-    font-size: 14px;
-    margin-bottom: 6px;
-    color: #334155;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
 }
 
-/* ========================= */
-/* EMPTY MESSAGE */
-/* ========================= */
-.main-content p {
-    font-size: 16px;
-    color: #64748b;
+.card p strong {
+    color: var(--text-header);
+    font-weight: 600;
 }
 
-/* ========================= */
-/* RESPONSIVE DESIGN */
-/* ========================= */
+/* Dynamic Highlights */
+.card p:nth-of-type(3) { /* Price row */
+    font-size: 1.25rem;
+    color: var(--accent-blue);
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+}
+
+/* Stock Logic (Visual) */
+.card p:last-child {
+    font-weight: 700;
+    color: var(--success);
+}
+
+/* Empty State Styling */
+.main-content > p {
+    font-style: italic;
+    color: var(--text-body);
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* 5. Mobile Responsiveness */
 @media (max-width: 768px) {
     .sidebar {
-        width: 200px;
+        width: 100%;
+        height: auto;
+        position: relative;
     }
-
     .main-content {
-        margin-left: 200px;
-        padding: 20px;
+        margin-left: 0;
+        padding: 1.5rem;
     }
 }

@@ -12,5 +12,7 @@ urlpatterns=[
     path("add-category/", views.add_category, name="add_category"),
     path("book-product/<int:product_id>/", views.book_product, name="book_product"),
     path("your-bookings/", views.your_bookings, name="your_bookings"),
+    path('admin-users/', views.admin_users, name='admin_users'),
+    path('admin-bookings/', views.admin_bookings, name='admin_bookings'),
 
 ]

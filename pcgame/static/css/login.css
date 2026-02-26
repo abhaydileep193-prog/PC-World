@@ -1,118 +1,145 @@
-/* ================= LOGIN PAGE ================= */
+/* 1. Setup & Background */
+:root {
+    --primary: #38bdf8;       /* Electric Blue */
+    --primary-hover: #0ea5e9;
+    --bg-auth: #0f172a;       /* Dark Navy */
+    --card-bg: rgba(30, 41, 59, 0.7); 
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --error: #ef4444;
+    --success: #22c55e;
+}
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* 2. Full-Screen Wrapper */
 .auth-body {
-    background: linear-gradient(to right, #2563eb, #1e40af);
-    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top right, #1e293b, #0f172a);
     height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .auth-wrapper {
     width: 100%;
-    max-width: 420px;
+    max-width: 400px;
     padding: 20px;
 }
 
+/* 3. The Login Card */
 .auth-card {
-    background: white;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
     padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     text-align: center;
-    animation: fadeIn 0.6s ease-in-out;
 }
 
 .auth-card h2 {
-    margin-bottom: 10px;
-    color: #1f2937;
+    color: var(--text-main);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 8px;
 }
 
 .auth-subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
     margin-bottom: 30px;
-    color: #6b7280;
-    font-size: 14px;
 }
 
+/* 4. Form Styling */
 .input-group {
     text-align: left;
     margin-bottom: 20px;
 }
 
 .input-group label {
-    font-size: 14px;
-    color: #374151;
     display: block;
-    margin-bottom: 6px;
+    color: var(--text-main);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-left: 4px;
 }
 
 .input-group input {
     width: 100%;
-    padding: 10px 12px;
-    border-radius: 6px;
-    border: 1px solid #d1d5db;
-    font-size: 14px;
-    transition: 0.3s;
+    padding: 12px 16px;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
 .input-group input:focus {
-    border-color: #2563eb;
     outline: none;
-    box-shadow: 0 0 0 2px rgba(37,99,235,0.2);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.15);
+    background: rgba(15, 23, 42, 0.8);
 }
 
+/* 5. Buttons */
 .btn-auth {
     width: 100%;
     padding: 12px;
-    border-radius: 6px;
+    background: var(--primary);
+    color: #0f172a;
     border: none;
-    background: #2563eb;
-    color: white;
-    font-weight: 600;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    margin-top: 10px;
 }
 
 .btn-auth:hover {
-    background: #1e40af;
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(56, 189, 248, 0.4);
 }
 
+/* 6. Messages (Django Messages) */
+.message {
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+}
+.message.error { background: rgba(239, 68, 68, 0.1); color: var(--error); border: 1px solid var(--error); }
+.message.success { background: rgba(34, 197, 94, 0.1); color: var(--success); border: 1px solid var(--success); }
+
+/* 7. Footer Links */
 .auth-footer {
-    margin-top: 20px;
-    font-size: 14px;
+    margin-top: 25px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 
 .auth-footer a {
-    color: #2563eb;
+    color: var(--primary);
     text-decoration: none;
     font-weight: 600;
 }
 
-/* Smooth animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-.message {
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 6px;
-    font-size: 14px;
+.auth-footer a:hover {
+    text-decoration: underline;
 }
 
-.message.error {
-    background: #fee2e2;
-    color: #b91c1c;
-}
-
-.message.success {
-    background: #dcfce7;
-    color: #166534;
+.auth-footer .btn {
+    display: inline-block;
+    margin-top: 15px;
+    opacity: 0.7;
+    font-size: 0.8rem;
 }
